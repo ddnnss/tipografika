@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="Description" content=''>
+      <meta name="Keywords" content=''>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ page_title }} </title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="{% static 'css/preload.min.css'%} " rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/plugins.min.css'%} " rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/style.css'%} " rel="stylesheet" type="text/css" />
+
+
+
+</head>
+
+<body>
+
+ <div id="ms-preload" class="ms-preload">
+      <div id="status">
+        <div class="spinner">
+          <div class="dot1"></div>
+          <div class="dot2"></div>
+        </div>
+      </div>
+    </div>
+ <div class="ms-site-container">
+
+<form id="dummy_form">{% csrf_token %}
+
+</form>
+
+
+
+{% include 'header.html' %}
+
+{% block content %}
+
+{% endblock %}
+
+{% include 'footer.html' %}
+
+</div>
+  <script src="{% static 'js/plugins.min.js'%}"></script>
+<script src="{% static 'js/app.min.js'%}"></script>
+
+    
+    
+
+
+</body>
+
+</html>
