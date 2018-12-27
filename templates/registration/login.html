@@ -1,0 +1,55 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block content %}
+<div class="ms-hero-page-override ms-hero-img-city ms-hero-bg-dark-light">
+
+      </div>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-lg-6">
+            <div class="card card-hero card-primary animated fadeInUp animation-delay-7">
+             <div class="card-body">
+                <h1 class="color-primary text-center">ВХОД В CRM</h1>
+                  {{ form.errors }}
+                <form method="post" class="form-horizontal">{% csrf_token %}
+
+
+
+                  <fieldset>
+                    <div class="form-group row">
+                      <label for="inputEmail" class="col-md-3 control-label">Email</label>
+                      <div class="col-md-9">
+                        <input type="email" name="{{ form.username.name }}" class="form-control" id="inputEmail" required="required" placeholder="Адрес электронной почты"> </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputPassword"  class="col-md-3 control-label">Пароль</label>
+                      <div class="col-md-9">
+                        <input type="password" name="{{ form.password.name }}" class="form-control" id="inputPassword" required="required" placeholder="Введите ваш пароль"> </div>
+                    </div>
+                  </fieldset>
+                  <button class="btn btn-raised btn-primary btn-block">ВОЙТИ
+                    <i class="zmdi zmdi-long-arrow-right no-mr ml-1"></i>
+                  </button>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
