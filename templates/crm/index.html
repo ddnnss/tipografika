@@ -51,69 +51,35 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>Продукция</th>
-                <th>Количество</th>
-                <th>Стоимость</th>
+                <th>КЛИЕНТ</th>
+                 <th>СУММА</th>
+                 <th></th>
+                <th>СТАТУС ОПЛАТЫ</th>
+                <th>ДАТА ПРИНЯТИЯ</th>
+                 <th>МЕНЕДЖЕР</th>
+                 <th>ВЫПОЛНЕН</th>
+                 <th>СРОК СДАЧИ</th>
+                 <th></th>
 
             </tr>
             </thead>
             <tbody>
+            {% for order in orders %}
             <tr>
-                <td>1</td>
-                <td>Визитка 1</td>
-                <td>100</td>
-                <td>3000</td>
+                <td>{{ order.id }}</td>
+                <td>{{ order.client.name }} {{ order.client.family }} {{ order.client.otchesnvo }}</td>
+                <td>{{ order.total_price }}</td>
+                <td></td>
+             <td>{{ order.is_money_received }}</td>
+             <td>{{ order.order_received }}</td>
+             <td>{{ order.manager.email }}</td>
+             <td>{{ order.is_complete }}</td>
+             <td>{{ order.deadline }}</td>
+            <td><a class="btn btn-raised btn-primary" href="{% url 'order' order.id %}">ПОДРОБНО</a></td>
+
 
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Визитка 1</td>
-                <td>100</td>
-                <td>3000</td>
-
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Визитка 1</td>
-                <td>100</td>
-                <td>3000</td>
-
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Визитка 1</td>
-                <td>100</td>
-                <td>3000</td>
-
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Визитка 1</td>
-                <td>100</td>
-                <td>3000</td>
-
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Визитка 1</td>
-                <td>100</td>
-                <td>3000</td>
-
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Визитка 1</td>
-                <td>100</td>
-                <td>3000</td>
-
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Визитка 1</td>
-                <td>100</td>
-                <td>3000</td>
-
-            </tr>
+            {% endfor %}
 
             </tbody>
         </table>

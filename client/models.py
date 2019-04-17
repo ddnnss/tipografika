@@ -1,19 +1,19 @@
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
 
+from customuser.models import User
 
 class Client(models.Model):
-    name = models.CharField(_('Имя'), max_length=50, blank=True, null=True, default='')
-    family = models.CharField(_('Фамилия'), max_length=50, blank=True, null=True, default='')
-    otchesnvo = models.CharField(_('Отчество'), max_length=50, blank=True, null=True, default='')
-    firm = models.CharField(_('Фирма'), max_length=50, blank=True, null=True, default='')
-    email = models.EmailField(_('email address'), unique=True)
-    phone = models.CharField(_('Телефон'), max_length=50, blank=True, null=True, default='')
-    is_vip = models.BooleanField(_('Вип'), default=False)
-    firm_address = models.TextField(_('Адрес фирмы'),default='', blank=True, null=True)
-    personal_address = models.TextField(_('Личный адрес'), default='', blank=True, null=True)
-    
-    
+    name = models.CharField('Имя', max_length=50, blank=False, null=True, default='')
+    family = models.CharField('Фамилия', max_length=50, blank=False, null=True, default='')
+    otchesnvo = models.CharField('Отчество', max_length=50, blank=False, null=True, default='')
+    firm = models.CharField('Организация', max_length=50, blank=True, null=True, default='')
+    email = models.EmailField('email address', unique=True)
+    phone = models.CharField('Телефон', max_length=50, blank=False, null=True, default='')
+    firm_address = models.TextField('Адрес организации',default='', blank=True, null=True)
+    personal_address = models.TextField('Личный адрес', default='', blank=True, null=True)
+    comment = models.TextField('Комментарий к клиенту', default='', blank=True, null=True)
+    manager = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE, verbose_name='Ведущий менеджер')
+
     def __str__(self):
         return 'Клиент :  %s %s %s' % (self.name, self.family, self.otchesnvo)
 

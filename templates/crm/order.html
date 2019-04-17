@@ -1,0 +1,114 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+    <div class="row">
+        <div class="col-5">
+            <table class="table table-bordered">
+
+                      <tbody>
+
+                        <tr>
+                          <td>ID {{ order.id }}</td>
+                        </tr>
+                      <tr>
+                          <td>{{ order.client.name }} {{ order.client.family }} {{ order.client.otchesnvo }}</td>
+                        </tr>
+                      <tr>
+                          <td>
+                              {{ order.client.firm }}
+                          </td>
+                      </tr>
+                        <tr>
+                          <td>
+                              {{ order.client.phone }}
+                          </td>
+                      </tr>
+
+                        <tr>
+                          <td>
+                               {{ order.client.email }}
+                          </td>
+                      </tr>
+
+                        <tr>
+                          <td>
+                               {{ order.order_received }}
+                          </td>
+                      </tr>
+
+                        <tr>
+                          <td>
+                              ПРИНЯТ: {{ order.is_money_received }}
+                          </td>
+                      </tr>
+
+                        <tr>
+                          <td>
+                              ДОСТАВКА: {{ order.delivery_address}}
+                          </td>
+                      </tr>
+
+                        <tr>
+                          <td>
+                             ВАЖНЫЙ: {{ order.is_vip}}
+                          </td>
+                      </tr>
+                       <tr>
+                          <td>
+                              СУММА: {{ order.total_price}} руб
+                          </td>
+                      </tr>
+
+
+
+
+
+
+
+                      </tbody>
+                    </table>
+        </div>
+         <div class="col-7">
+            {% for item in order.itemsinorder_set.all %}
+ <table class="table table-bordered">
+
+                      <tbody>
+
+                        <tr class="info">
+                          <td colspan="2" >ПОЗИЦИЯ  {{ item.id }}</td>
+
+                        </tr>
+                      <tr>
+                          <td style="width: 80%">{{ item.item_info }}</td>
+                          <td>{{ item.tirag }} шт</td>
+                        </tr>
+                      <tr>
+
+                          <td colspan="2">{{ item.deadline }}</td>
+
+                      </tr>
+                   
+                      </tbody>
+                    </table>
+                
+             {% endfor %}
+        </div>
+    </div>
+
+
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

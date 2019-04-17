@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+
+
 
 
 class UserManager(BaseUserManager):
@@ -41,12 +42,12 @@ class User(AbstractUser):
     """User model."""
 
     username = None
-    email = models.EmailField(_('email address'), unique=True)
-    phone = models.CharField(_('phone'), max_length=50, blank=True, null=True, default='')
-    is_manager = models.BooleanField(_('manager'), default=False)
-    is_performer = models.BooleanField(_('performer'), default=False, blank=True, null=True)
-    works_done = models.IntegerField(_('work done'), default=0, blank=True, null=True)
-    work_time = models.TextField(_('working time'), default='', blank=True, null=True)
+    email = models.EmailField('email address', unique=True)
+    phone = models.CharField('phone', max_length=50, blank=True, null=True, default='')
+    is_manager = models.BooleanField('manager', default=False)
+    is_performer = models.BooleanField('performer', default=False, blank=True, null=True)
+    works_done = models.IntegerField('work done', default=0, blank=True, null=True)
+    work_time = models.TextField('working time', default='', blank=True, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
