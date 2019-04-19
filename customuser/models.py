@@ -42,13 +42,9 @@ class User(AbstractUser):
     """User model."""
 
     username = None
-    email = models.EmailField('email address', unique=True)
-    phone = models.CharField('phone', max_length=50, blank=True, null=True, default='')
-    is_manager = models.BooleanField('manager', default=False)
-    is_performer = models.BooleanField('performer', default=False, blank=True, null=True)
-    works_done = models.IntegerField('work done', default=0, blank=True, null=True)
-    work_time = models.TextField('working time', default='', blank=True, null=True)
-
+    email = models.EmailField('E-mail', unique=True)
+    phone = models.CharField('Телефон', max_length=50, blank=True, null=True, default='')
+    fio = models.CharField('Ф.И.О.', max_length=50, blank=True, null=True, default='')
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
