@@ -3,9 +3,8 @@ from django.db import models
 from customuser.models import User
 
 class Client(models.Model):
-    name = models.CharField('Имя', max_length=50, blank=False, null=True, default='')
-    family = models.CharField('Фамилия', max_length=50, blank=False, null=True, default='')
-    otchesnvo = models.CharField('Отчество', max_length=50, blank=False, null=True, default='')
+    name = models.CharField('Ф.И.О.', max_length=50, blank=False, null=True, default='')
+
     firm = models.CharField('Организация', max_length=50, blank=True, null=True, default='')
     email = models.EmailField('email address', unique=True)
     phone = models.CharField('Телефон', max_length=50, blank=False, null=True, default='')
@@ -15,7 +14,7 @@ class Client(models.Model):
     manager = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE, verbose_name='Ведущий менеджер')
 
     def __str__(self):
-        return 'Клиент :  %s %s %s' % (self.name, self.family, self.otchesnvo)
+        return 'Клиент :  %s ' % self.name
 
     class Meta:
         verbose_name = "Клиент"

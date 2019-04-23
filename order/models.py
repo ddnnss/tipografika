@@ -1,13 +1,16 @@
 from django.db import models
 from client.models import Client
 from customuser.models import User
+from django.db.models.signals import post_save
+
 
 
 
 
 class Order(models.Model):
     client = models.ForeignKey(Client, blank=True, null=True, on_delete=models.SET_NULL, verbose_name='Клиент')
-    total_price = models.DecimalField('Стоимость заказа', max_digits=8, decimal_places=2, blank=True, null=True)
+    total_price = models.DecimalField('Стоимость заказа', max_digits=8, decimal_places=2,
+                                      blank=True, null=True, default=0)
     order_received = models.DateTimeField('Дата принятия заказа', blank=True, null=True)
     is_vip = models.BooleanField('Вип заказ', default=False)
     comment = models.TextField('Коментарий', default='', blank=True, null=True)
@@ -26,6 +29,8 @@ class Order(models.Model):
     class Meta:
         verbose_name = "Заказ"
         verbose_name_plural = "Заказы"
+
+
 
 class Status(models.Model):
     name = models.CharField('Название статуса', max_length=50, blank=False)
@@ -53,3 +58,24 @@ class ItemsInOrder(models.Model):
     class Meta:
         verbose_name = "Позиция в заказе"
         verbose_name_plural = "Позиции в заказах"
+
+
+def ItemsInOrder_post_save(sender,instance,**kwargs):
+    try:
+        order = instance.order
+    except:
+        order = None
+
+    if order:
+        order_total_price = 0
+        all_items_in_order = ItemsInOrder.objects.filter(order=order)
+
+        for item in all_items_in_order:
+            order_total_price += item.price
+
+        instance.order.total_price = order_total_price
+        instance.order.save(force_update=True)
+
+
+
+post_save.connect(ItemsInOrder_post_save, sender=ItemsInOrder)

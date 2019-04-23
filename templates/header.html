@@ -15,12 +15,12 @@
             <ul class="navbar-nav pull-left">
                  {% if user.is_authenticated %}
                 <li class="nav-item dropdown active">
-                    <a href="#" class="nav-link dropdown-toggle animated fadeIn animation-delay-7" >ЗАКАЗЫ</a>
+                    <a href="{% url 'index'%}" class="nav-link dropdown-toggle animated fadeIn animation-delay-7" >ЗАКАЗЫ</a>
 
 
                 </li>
                 <li class="nav-item dropdown ">
-                    <a href="#" class="nav-link dropdown-toggle animated fadeIn animation-delay-7" >КЛИЕНТЫ</a>
+                    <a href="{% url 'clients'%}" class="nav-link dropdown-toggle animated fadeIn animation-delay-7" >КЛИЕНТЫ</a>
                 </li>
                 <li class="nav-item dropdown ">
                     <a href="/admin" class="nav-link dropdown-toggle animated fadeIn animation-delay-7" >АДМИНКА</a>
@@ -37,9 +37,9 @@
                     </span>
 
                 </li>
-                  <li class="nav-item dropdown ">
-                    <a href="#" class="nav-link dropdown-toggle animated fadeIn animation-delay-7" >ЛК</a>
-                </li>
+{#                  <li class="nav-item dropdown ">#}
+{#                    <a href="#" class="nav-link dropdown-toggle animated fadeIn animation-delay-7" >ЛК</a>#}
+{#                </li>#}
                    <li class="nav-item dropdown ">
                     <a href="{% url 'logout' %}" class="nav-link dropdown-toggle animated fadeIn animation-delay-7" >ВЫХОД</a>
                 </li>

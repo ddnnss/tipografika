@@ -1,0 +1,51 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+    <div class="row">
+      <table class="table table-no-border table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>КЛИЕНТ</th>
+                <th>ТЕЛЕФОН</th>
+                 <th>EMAIL</th>
+                <th>ОРГАНИЗАЦИЯ</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for client in clients %}
+            <tr>
+                <td>{{ client.id }}</td>
+                <td>{{ client.name }}</td>
+                <td>{{ client.phone }}</td>
+                <td>{{ client.email }}</td>
+             <td>{{ client.firm }}</td>
+
+            <td><a class="btn btn-raised btn-primary" href="/admin/client/client/{{ client.id }}/change/">ПОДРОБНО</a></td>
+
+
+            </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
