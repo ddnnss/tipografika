@@ -18,3 +18,8 @@ def order(request, order_id):
 def clients(request):
     clients = Client.objects.all()
     return render(request, 'crm/clients.html', locals())
+
+@login_required
+def client(request, client_id):
+    client = Client.objects.get(id=client_id)
+    return render(request, 'crm/client.html', locals())

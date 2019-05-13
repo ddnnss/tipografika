@@ -2,6 +2,7 @@ from django.db import models
 from client.models import Client
 from customuser.models import User
 from django.db.models.signals import post_save
+from customuser.models import Manager
 
 
 
@@ -14,7 +15,7 @@ class Order(models.Model):
     order_received = models.DateTimeField('Дата принятия заказа', blank=True, null=True)
     is_vip = models.BooleanField('Вип заказ', default=False)
     comment = models.TextField('Коментарий', default='', blank=True, null=True)
-    manager = models.ForeignKey(User, blank=True, null=True,verbose_name='Ведущий менеджер', on_delete=models.SET_NULL)
+    manager = models.ForeignKey(Manager, blank=True, null=True,verbose_name='Ведущий менеджер', on_delete=models.SET_NULL)
     is_money_received = models.BooleanField('Статус оплаты', default=False)
     is_manager_pay = models.BooleanField('Выплата менеджеру', default=False)
     is_complete = models.BooleanField('Заказ выполнен', default=False)

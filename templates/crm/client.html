@@ -10,56 +10,40 @@
                       <tbody>
 
                         <tr>
-                          <td>ID {{ order.id }}</td>
+                          <td>ID :{{ client.id }}</td>
                         </tr>
                       <tr>
-                          <td>{{ order.client.name }} </td>
+                          <td>ФИО :{{ client.name }} </td>
                         </tr>
                       <tr>
                           <td>
-                              {{ order.client.firm }}
+                              ОРГАНИЗАЦИЯ :{{ client.firm }}
                           </td>
                       </tr>
                         <tr>
                           <td>
-                              {{ order.client.phone }}
+                              ТЕЛЕФОН :{{ client.phone }}
                           </td>
                       </tr>
 
                         <tr>
                           <td>
-                               {{ order.client.email }}
+                               ЭЛ. ПОЧТА :{{ client.email }}
                           </td>
                       </tr>
 
                         <tr>
                           <td>
-                               {{ order.order_received }}
+                               АДРЕС ОРГАНИЗАЦИИ :{{ client.firm_address}}
                           </td>
                       </tr>
 
                         <tr>
                           <td>
-                              ПРИНЯТ: {{ order.is_money_received }}
+                               ДОМАШНИЙ АДРЕС :{{ client.personal_address }}
                           </td>
                       </tr>
 
-                        <tr>
-                          <td>
-                              ДОСТАВКА: {{ order.delivery_address}}
-                          </td>
-                      </tr>
-
-                        <tr>
-                          <td>
-                             ВАЖНЫЙ: {{ order.is_vip}}
-                          </td>
-                      </tr>
-                       <tr>
-                          <td>
-                              СУММА: {{ order.total_price}} руб
-                          </td>
-                      </tr>
                        <tr>
                           <td>
                               КОММЕНТАРИЙ:<br> {{ order.comment}}                          </td>
@@ -75,23 +59,20 @@
                     </table>
         </div>
          <div class="col-7">
-            {% for item in order.itemsinorder_set.all %}
+            {% for order in client.order_set.all %}
  <table class="table table-bordered">
 
                       <tbody>
 
                         <tr class="info">
-                          <td colspan="2" >ПОЗИЦИЯ  {{ item.id }}</td>
+                          <td colspan="2" >ЗАКАЗ  {{ order.id }}</td>
 
                         </tr>
                       <tr>
-                          <td style="width: 80%">{{ item.item_info }}</td>
-                          <td>{{ item.tirag }} шт</td>
+                          <td style="width: 80%">{{ order.total_price }}</td>
+
                         </tr>
-                      <tr>
-                          <td colspan="2">{{ item.deadline }}</td>
-                      </tr>
-                   
+
                       </tbody>
                     </table>
                 

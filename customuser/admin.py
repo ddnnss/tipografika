@@ -2,12 +2,12 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.utils.translation import ugettext_lazy as _
 
-from .models import User
+from .models import *
 
 
 @admin.register(User)
 class UserAdmin(DjangoUserAdmin):
-    """Define admin model for custom User model with no email field."""
+    """Кастомный админ в админке"""
 
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
@@ -25,3 +25,6 @@ class UserAdmin(DjangoUserAdmin):
     list_display = ('email',  'fio', 'phone')
     search_fields = ('email',  'fio', 'phone')
     ordering = ('email',)
+
+
+admin.site.register(Manager)

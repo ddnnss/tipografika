@@ -3,8 +3,8 @@ from django.db import models
 from customuser.models import User
 
 class Client(models.Model):
+    """Клиент"""
     name = models.CharField('Ф.И.О.', max_length=50, blank=False, null=True, default='')
-
     firm = models.CharField('Организация', max_length=50, blank=True, null=True, default='')
     email = models.EmailField('email address', unique=True)
     phone = models.CharField('Телефон', max_length=50, blank=False, null=True, default='')

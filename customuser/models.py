@@ -53,3 +53,15 @@ class User(AbstractUser):
     objects = UserManager()
 
 
+
+class Manager(models.Model):
+    email = models.EmailField('Email', blank=True, null=True, default='' )
+    fio = models.CharField('ФИО', max_length=50, blank=True, null=True, default='')
+    phone = models.CharField('Телефон', max_length=50, blank=True, null=True, default='')
+
+    def __str__(self):
+        return '%s' % self.fio
+
+    class Meta:
+        verbose_name = "Менеджер"
+        verbose_name_plural = "Менеджеры"

@@ -47,7 +47,7 @@
 }
 
 body {
-    background-color: #eee
+    background-color: #fff
 }
 
 body.inverse {
@@ -4062,7 +4062,8 @@ hr.on-light {
 
 html {
     font-size: 10px;
-    -webkit-font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased;
+    background: #fff;
 }
 
 body {
@@ -4084,7 +4085,7 @@ body.bd-scroll {
 
 body .ms-site-container {
     transform: none;
-    background-color: #f5f5f5;
+    background-color: #fff;
     min-height: 0
 }
 
