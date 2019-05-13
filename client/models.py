@@ -1,6 +1,6 @@
 from django.db import models
 
-from customuser.models import User
+from customuser.models import Manager
 
 class Client(models.Model):
     """Клиент"""
@@ -11,7 +11,7 @@ class Client(models.Model):
     firm_address = models.TextField('Адрес организации',default='', blank=True, null=True)
     personal_address = models.TextField('Личный адрес', default='', blank=True, null=True)
     comment = models.TextField('Комментарий к клиенту', default='', blank=True, null=True)
-    manager = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE, verbose_name='Ведущий менеджер')
+    manager = models.ForeignKey(Manager, blank=True, null=True, on_delete=models.CASCADE, verbose_name='Ведущий менеджер')
 
     def __str__(self):
         return 'Клиент :  %s ' % self.name
